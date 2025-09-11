@@ -1,5 +1,5 @@
 -- MS SQL server
-CREATE TABLE [transaction](
+CREATE TABLE [transactions](
 	[trxId]                    [bigint] IDENTITY(1000,1) NOT NULL,
 	[amount]                   [numeric](19, 2)    NOT NULL,
 	[currency]                 [nvarchar](3)       NOT NULL,
@@ -22,14 +22,14 @@ CREATE TABLE [transaction](
 	[specificSymbol]           [varchar](10)       NULL,    
 	[variableSymbol]           [varchar](10)       NULL
 )
-;
+GO
 
 CREATE TABLE [transactionType](
 	[trxTypeId]                [bigint] IDENTITY(1000,1) NOT NULL,
 	[type]                     [nvarchar](20)            NOT NULL,
 	[code]                     [int]                     NOT NULL
 )
-;
+GO
 
 CREATE TABLE [statement](
 	[statementId]              [bigint] IDENTITY(1000,1) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE [statement](
 	[period]                   [nvarchar](20)            NOT NULL,
 	[description]              [nvarchar](1000)          NULL
 )
-;
+GO
 
 CREATE TABLE [account](
 	[accountId]              [bigint] IDENTITY(1000,1) NOT NULL,
@@ -45,34 +45,34 @@ CREATE TABLE [account](
 	[number]                 [nvarchar](20)            NOT NULL,
 	[code]                   [nvarchar](4)             NOT NULL
 )
-;
+GO
 
 
-ALTER TABLE [transaction]
-    ADD CONSTRAINT PK_transaction_trxId PRIMARY KEY (trxId)
-;
+ALTER TABLE [transactions]
+    ADD CONSTRAINT PK_transactions_trxId PRIMARY KEY (trxId)
+GO
 
 ALTER TABLE [transactionType]
     ADD CONSTRAINT PK_transactionType_trxTypeId PRIMARY KEY (trxTypeId)
-;
+GO
 
 ALTER TABLE [statement]
     ADD CONSTRAINT PK_statement_statementId PRIMARY KEY (statementId)
-;
+GO
 
 ALTER TABLE [account]
     ADD CONSTRAINT PK_account_accountId PRIMARY KEY (accountId)
-;
+GO
 
-ALTER TABLE [transaction] 
-    ADD CONSTRAINT FK_transaction_counterPartyAccount FOREIGN KEY (counterPartyAccount) REFERENCES account(accountId)
-;    
+ALTER TABLE [transactions] 
+    ADD CONSTRAINT FK_transactions_counterPartyAccount FOREIGN KEY (counterPartyAccount) REFERENCES account(accountId)
+GO    
 
-ALTER TABLE [transaction] 
-    ADD CONSTRAINT FK_transaction_transactionType FOREIGN KEY (transactionType) REFERENCES transactionType(trxTypeId)
-;  
+ALTER TABLE [transactions] 
+    ADD CONSTRAINT FK_transactions_transactionType FOREIGN KEY (transactionType) REFERENCES transactionType(trxTypeId)
+GO  
 
-ALTER TABLE [transaction] 
-    ADD CONSTRAINT FK_transaction_statement FOREIGN KEY (statement) REFERENCES statement(statementId)
-;  
+ALTER TABLE [transactions] 
+    ADD CONSTRAINT FK_transactions_statement FOREIGN KEY (statement) REFERENCES statement(statementId)
+GO  
  
