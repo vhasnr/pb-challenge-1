@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import cz.vhasnr.ppf.challenge1.persistence.entity.Transaction;
+import cz.vhasnr.ppf.challenge1.dto.TransactionDto;
 import cz.vhasnr.ppf.challenge1.service.AccountService;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +30,7 @@ public class AccountsController {
      * @return
      */
     @GetMapping("/{accountId}/transactions")
-    public ResponseEntity<List<Transaction>> getAccountTransactions(
+    public ResponseEntity<List<TransactionDto>> getAccountTransactions(
             @PathVariable @Size(min = 1, max = 20) String accountId) {
         return ResponseEntity.ok(accountService.findAllByAccountId(accountId));
     }

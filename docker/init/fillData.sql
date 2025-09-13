@@ -9,7 +9,11 @@ INSERT INTO [account] ([name], [number], [code]) VALUES
 ('Jane Smith Business Account', '9876543210987654', 'EUR'),
 ('Bob Johnson Savings Account', '5555444433332222', 'USD'),
 ('Alice Brown Checking Account', '1111222233334444', 'CZK'),
-('Charlie Wilson Investment Account', '7777888899990000', 'EUR');
+('Charlie Wilson Investment Account', '7777888899990000', 'EUR'),
+('PPF BANKA A.S. Account 1', '0000009504010019', 'CZK'),
+('PPF BANKA A.S. Account 2', '0000009505020008', 'CZK'),
+('PPF BANKA A.S. Account 3', '0000009503010009', 'CZK'),
+('Test Account 2002222222', '2002222222', 'CZK');
 
 -- Insert test data for transactionType table
 INSERT INTO [transactionType] ([type], [code]) VALUES
@@ -19,7 +23,9 @@ INSERT INTO [transactionType] ([type], [code]) VALUES
 ('Withdrawal', 1004),
 ('Fee', 1005),
 ('Interest', 1006),
-('Refund', 1007);
+('Refund', 1007),
+('DPO', 1012209),
+('DPO', 0);
 
 -- Insert test data for statement table
 INSERT INTO [statement] ([number], [period], [description]) VALUES
@@ -27,7 +33,9 @@ INSERT INTO [statement] ([number], [period], [description]) VALUES
 ('STMT-2024-002', '2024-02', 'February 2024 Statement'),
 ('STMT-2024-003', '2024-03', 'March 2024 Statement'),
 ('STMT-2024-004', '2024-04', 'April 2024 Statement'),
-('STMT-2024-005', '2024-05', 'May 2024 Statement');
+('STMT-2024-005', '2024-05', 'May 2024 Statement'),
+('196', '2022', 'Statement 196 for 2022'),
+('195', '2022', 'Statement 195 for 2022');
 
 -- Insert test data for transactions table
 INSERT INTO [transactions] (
@@ -116,5 +124,31 @@ INSERT INTO [transactions] (
 (50.00, 'EUR', 'TXN015', 'BR015', 'TXN-2024-015', 
  '2024-01-30', '2024-01-30', 'DBIT', '7777888899990000', 1000, 
  'Management fee', 'Portfolio management', 'Investment fees', 'Advisory fee', 
- 'PROD-015', 1004, 1004, '0308', '123470', '2024015');
+ 'PROD-015', 1004, 1004, '0308', '123470', '2024015'),
+
+-- Transactions for account 2002222222 (from example response)
+(1500.00, 'CZK', '20221019:0000000219', 'PS221019SO314822', '4831716', 
+ '2022-10-19', '2022-10-19', 'CRDT', '2002222222', 1005, 
+ 'Posílám peníze', '', '', '', 
+ 'PS221019SO314822', 1007, 1005, '', '12', '12'),
+
+(1999.00, 'CZK', '20221019:0000000220', 'PS221019SO314822', '4831701', 
+ '2022-10-19', '2022-10-19', 'CRDT', '2002222222', 1006, 
+ 'Trvalý příkaz 8', '', '', '', 
+ 'PS221019SO314822', 1008, 1005, '', '12', '12'),
+
+(2000.00, 'CZK', '20221019:0000000221', 'PS221019SO314823', '4831700', 
+ '2022-10-19', '2022-10-19', 'CRDT', '2002222222', 1007, 
+ 'Na dárky', '', '', '', 
+ 'PS221019SO314823', 1007, 1005, '', '61', '61'),
+
+(100.00, 'CZK', '20221018:0000003607', 'PS221018SO314645', '4831425', 
+ '2022-10-18', '2022-10-18', 'CRDT', '2002222222', 1005, 
+ 'Příspěvek', '', '', '', 
+ 'PS221018SO314645', 1007, 1006, '', '12', '12'),
+
+(1594.00, 'CZK', '20221018:0000003608', 'PS221018SO314645', '4831381', 
+ '2022-10-18', '2022-10-18', 'DBIT', '2002222222', 1006, 
+ 'Platba elektřiny', '', '', '', 
+ 'PS221018SO314645', 1008, 1006, '', '12', '12');
 END

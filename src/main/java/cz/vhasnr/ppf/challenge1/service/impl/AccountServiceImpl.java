@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.ErrorResponseException;
 
-import cz.vhasnr.ppf.challenge1.persistence.entity.Transaction;
+import cz.vhasnr.ppf.challenge1.dto.TransactionDto;
 import cz.vhasnr.ppf.challenge1.persistence.repository.AccountRepository;
 import cz.vhasnr.ppf.challenge1.service.AccountService;
 import cz.vhasnr.ppf.challenge1.service.TransactionService;
@@ -22,7 +22,7 @@ public class AccountServiceImpl implements AccountService {
     private final TransactionService transactionService;
 
     @Override
-    public List<Transaction> findAllByAccountId(String accountId) {
+    public List<TransactionDto> findAllByAccountId(String accountId) {
 
         // Throw 404 if account not found
         if (!accountRepository.existsByNumber(accountId)) {
