@@ -10,9 +10,9 @@ INSERT INTO [account] ([name], [number], [code]) VALUES
 ('Bob Johnson Savings Account', '5555444433332222', 'USD'),
 ('Alice Brown Checking Account', '1111222233334444', 'CZK'),
 ('Charlie Wilson Investment Account', '7777888899990000', 'EUR'),
-('PPF BANKA A.S. Account 1', '0000009504010019', 'CZK'),
-('PPF BANKA A.S. Account 2', '0000009505020008', 'CZK'),
-('PPF BANKA A.S. Account 3', '0000009503010009', 'CZK'),
+('PPF BANKA A.S.', '0000009504010019', '6000'),
+('PPF BANKA A.S.', '0000009505020008', '6000'),
+('PPF BANKA A.S.', '0000009503010009', '6000'),
 ('Test Account 2002222222', '2002222222', 'CZK');
 
 -- Insert test data for transactionType table
@@ -129,26 +129,26 @@ INSERT INTO [transactions] (
 -- Transactions for account 2002222222 (from example response)
 (1500.00, 'CZK', '20221019:0000000219', 'PS221019SO314822', '4831716', 
  '2022-10-19', '2022-10-19', 'CRDT', '2002222222', 1005, 
- 'Posílám peníze', '', '', '', 
+ 'Posílám peníze', null, null, null, 
  'PS221019SO314822', 1007, 1005, '', '12', '12'),
 
 (1999.00, 'CZK', '20221019:0000000220', 'PS221019SO314822', '4831701', 
  '2022-10-19', '2022-10-19', 'CRDT', '2002222222', 1006, 
- 'Trvalý příkaz 8', '', '', '', 
+ 'Trvalý příkaz 8', null, null, null, 
  'PS221019SO314822', 1008, 1005, '', '12', '12'),
 
 (2000.00, 'CZK', '20221019:0000000221', 'PS221019SO314823', '4831700', 
  '2022-10-19', '2022-10-19', 'CRDT', '2002222222', 1007, 
- 'Na dárky', '', '', '', 
+ 'Na dárky', null, null, null, 
  'PS221019SO314823', 1007, 1005, '', '61', '61'),
 
 (100.00, 'CZK', '20221018:0000003607', 'PS221018SO314645', '4831425', 
  '2022-10-18', '2022-10-18', 'CRDT', '2002222222', 1005, 
- 'Příspěvek', '', '', '', 
+ 'Příspěvek', null, null, null, 
  'PS221018SO314645', 1007, 1006, '', '12', '12'),
 
 (1594.00, 'CZK', '20221018:0000003608', 'PS221018SO314645', '4831381', 
  '2022-10-18', '2022-10-18', 'DBIT', '2002222222', 1006, 
- 'Platba elektřiny', '', '', '', 
+ 'Platba elektřiny', null, null, null, 
  'PS221018SO314645', 1008, 1006, '', '12', '12');
 END

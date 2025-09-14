@@ -12,10 +12,12 @@ import cz.vhasnr.ppf.challenge1.dto.TransactionDto;
 import cz.vhasnr.ppf.challenge1.service.AccountService;
 import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/accounts")
 @RequiredArgsConstructor
+@Slf4j
 public class AccountsController {
 
     private final AccountService accountService;
@@ -32,6 +34,9 @@ public class AccountsController {
     @GetMapping("/{accountId}/transactions")
     public ResponseEntity<List<TransactionDto>> getAccountTransactions(
             @PathVariable @Size(min = 1, max = 20) String accountId) {
-        return ResponseEntity.ok(accountService.findAllByAccountId(accountId));
+
+        ResponseEntity<List<TransactionDto>> response = ResponseEntity.ok(accountService.findAllByAccountId(accountId));
+        log.trace("Response entity in getAccountTransactions API: {}", response);
+        return response;
     }
 }

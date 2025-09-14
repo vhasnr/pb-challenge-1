@@ -23,6 +23,7 @@ public class TransactionServiceImpl implements TransactionService {
     public List<TransactionDto> findAllByAccountId(String accountId) {
         List<Transaction> transactionList = transactionRepository.findByOwnAccountNumber(accountId)
                 .orElse(Collections.emptyList());
+
         return transactionMapper.toDto(transactionList);
     }
 }
