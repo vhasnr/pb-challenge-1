@@ -1,8 +1,9 @@
 -- Create login for chal1 user
 CREATE LOGIN chal1 WITH PASSWORD = '0e0e6bcb-db71-4256-b2a4-a7719f52e263';
 
--- Create the challenge1 database
-CREATE DATABASE challenge1;
+-- Create the challenge1 database with UTF-8 collation
+CREATE DATABASE challenge1 
+COLLATE Czech_CI_AS;
 GO
 
 -- Use the challenge1 database

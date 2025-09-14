@@ -1,0 +1,8 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=83edb36d-f757-4f0d-9ed3-d31299b993dc
+    ports:
+      - 1433:1433

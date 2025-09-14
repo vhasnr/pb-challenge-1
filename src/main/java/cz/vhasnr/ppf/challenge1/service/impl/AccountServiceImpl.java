@@ -26,7 +26,7 @@ public class AccountServiceImpl implements AccountService {
 
         // Throw 404 if account not found
         if (!accountRepository.existsByNumber(accountId)) {
-            log.error("Account not found in AccountServiceImpl for accountId: {}", accountId);
+            log.warn("Account not found in AccountServiceImpl for accountId: {}", accountId);
             ErrorResponseException exception = new ErrorResponseException(HttpStatus.NOT_FOUND);
             exception.setTitle("Account not found");
             throw exception;
