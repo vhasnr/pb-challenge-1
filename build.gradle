@@ -36,13 +36,11 @@ dependencies {
 
 	runtimeOnly 'com.microsoft.sqlserver:mssql-jdbc'
 
-	// runtimeOnly 'mysql:mysql-connector-java'
-
-	// testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	// testImplementation 'org.springframework.boot:spring-boot-testcontainers'
-	// testImplementation 'org.testcontainers:junit-jupiter'
-	// testImplementation 'org.testcontainers:mssqlserver'
-	// testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.boot:spring-boot-testcontainers'
+	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.testcontainers:mssqlserver'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.withType(JavaCompile) {
@@ -51,6 +49,17 @@ tasks.withType(JavaCompile) {
     ]
 }
 
-// tasks.named('test') {
-// 	useJUnitPlatform()
-// }
+// Log unit tests result
+tasks.withType(Test) {
+    afterSuite { desc, result ->
+        if (!desc.parent) { // only print for the root suite
+            println "\nTest result: ${result.resultType}"
+            println "Tests run: ${result.testCount}, Passed: ${result.successfulTestCount}, Failed: ${result.failedTestCount}, Skipped: ${result.skippedTestCount}"
+        }
+    }
+}
+
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

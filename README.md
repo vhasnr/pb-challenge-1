@@ -66,6 +66,10 @@ account
         "variableSymbol": "12"
     },...
 ```
+### Unit Tests
+From project root run `./gradlew test`, 4 succesful tests should be reported.
+Tests in this project arent actually 'unit' tests, test calls the API and validates expected data were returned by the service. Tests setup MS SQL in docker using test containers, inserts test data using .sql scripts, and uses all services and repositories for the test. 
+Production level service should add also unit tests of services using mocks, code coverage should be measured. 
 ## Proposals
 1. If possible, change db tables/columns naming to snake_case - then default naming strategy of Spring/Jakarta can be used 
 ## Technology
@@ -74,5 +78,3 @@ account
 - Flyway Migration
   - automatically applies .sql scripts and checks if particular script is already applied or not (thru migration metadata table)
 - Lombok - generates boilerplate java code as getters/setters, loggers etc.
-## Testing
-TODO unit tests using Testcointainers
